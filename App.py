@@ -3,7 +3,6 @@ import PIL.Image as Image
 from flask import Flask, jsonify, request, render_template, Response
 import cv2
 import requests
-from cv2 import *
 
 app = Flask(__name__)
 
