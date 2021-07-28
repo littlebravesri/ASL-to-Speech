@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASL to Speech</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body onload="onLoad()">
+
+    <style>
+        #background {
+            position: fixed;
+            width: 50%;
+            height: 100%;
+            background-color: floralwhite;
+        }
+
+        #content {
+            position: fixed;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            background-color: teal;
+        }
+
+        .leftsection {
+            width: 80%;
+            height: 60%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 18%;
+        }
+    </style>
+    <div id="background">
+        <img class="leftsection" id="cameraStream" alt="this is how you use the app">
+        <br>
+        <div id="instructions" class="leftsection">
+            <h1 style="height: 10%;"><b>American Sign Language to Speech</b></h2>
+            <h2 style="height: 10%;">Instructions</h2>
+            <p>
+                <li>Show your signs slowly since your actions will be captured every 3 seconds.</li>
+                <li>You can only dectect 4 signs at a time. The video will turn off after 12 seconds and your text will
+                    appear on the right side of the app.</li>
+                <li>Click the button to open your camera again to continue translating you signs to speech.</li>
+                <li>Make sure to bring your hand close to the camera.</li>
+                <li>Note: The predictions may not be accurate.</li>
+                <li>Visit <a href="https://apsea.ca/assets/images/dhh/learnhome/asl-abc.png" target="_blank">link</a> to learn the signs and test.</li>
+            </p>
+        </div>
+        <div class="text-center" id='CamButton'>
+            <button class="btn btn-primary " onclick="openCam()">Click to open camera</button>
+        </div>
+    </div>
+
+
+    <!-- right section -->
+    <div id="content" class="text-center">
+        <p id="p" style="margin-top: 38%; color: whitesmoke; font-size: 50px;"></p>
+    </div>
+
+    <script>
+        function onLoad() {
+            console.log("ON LOAD")
+            cam = document.getElementById("cameraStream")
+            cam.style.display = "none";
+        }
+
+        function openCam() {
+
+            camButton = document.getElementById("CamButton");
+            camButton.style.display = 'none'
+
+            cam = document.getElementById("cameraStream")
+            ins = document.getElementById("instructions");
+            if (ins.style.display === "none") {
+                ins.style.display = "block";
+                cam.style.display = "none";
+            } else {
+                ins.style.display = "none";
+                cam.style.display = "block";
+            }
+            cam.setAttribute("src", "/test")
+            var msg = new SpeechSynthesisUtterance();
+
+            fetch("http://127.0.0.1:5000/res", {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            }).then(function (response) {
+                return response.json();
+            }).then(function (res) {
+                cam.removeAttribute("src")
+                let p = document.getElementById("p").innerHTML = res
+                msg.text = res;
+                window.speechSynthesis.speak(msg);
+                ins.style.display = "block";
+                cam.style.display = "none";
+                camButton.style.display = 'block'
+
+            });
+        }
+    </script>
+</body>
+
+</html>
