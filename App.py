@@ -12,15 +12,6 @@ def home_page():
     return render_template('JavascriptWebCam.html')
 
 
-@app.route('/test', methods=['GET', 'POST'])
-def testfn():
-    #global cam
-    #cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-
-    #return Response(gen_frames(),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
-	return Response("True")
-
 @app.route('/res', methods=['GET', 'POST'])
 def res():
 
