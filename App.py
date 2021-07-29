@@ -50,11 +50,11 @@ def res():
     }
     img_counter = 0
     k = 0
-    while True:
+    #while True:
         #k = cv2.waitKey(1000)
-        if k == 27:
-            break
-        else:
+        #if k == 27:
+         #   break
+        #else:
             #cv2.imwrite("filename.jpg", frame)
             #im = cv2.imread("filename.jpg")
             #img = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
