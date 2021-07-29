@@ -1,7 +1,7 @@
 import json
 import PIL.Image as Image
 from flask import Flask, jsonify, request, render_template, Response
-import cv2
+#import cv2
 import requests
 
 app = Flask(__name__)
@@ -14,11 +14,12 @@ def home_page():
 
 @app.route('/test', methods=['GET', 'POST'])
 def testfn():
-    global cam
-    cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    #global cam
+    #cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
-    return Response(gen_frames(),
+    #return Response(gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+	return Response("True")
 
 
 def gen_frames():
@@ -50,38 +51,38 @@ def res():
     img_counter = 0
     k = 0
     while True:
-        k = cv2.waitKey(1000)
+        #k = cv2.waitKey(1000)
         if k == 27:
             break
         else:
-            cv2.imwrite("filename.jpg", frame)
-            im = cv2.imread("filename.jpg")
-            img = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-            img = cv2.Canny(img, 100, 200)
-            cv2.imwrite("filename.jpg", img)
-            with open("filename.jpg", 'rb') as f:
-                img_data = f.read()
+            #cv2.imwrite("filename.jpg", frame)
+            #im = cv2.imread("filename.jpg")
+            #img = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+            #img = cv2.Canny(img, 100, 200)
+            #cv2.imwrite("filename.jpg", img)
+            #with open("filename.jpg", 'rb') as f:
+             #   img_data = f.read()
 
-            body = img_data
-            response = requests.post(url, headers=headers, data=body)
-            # text = response.json()['predictions'][0]['tagName']
-            jsonRes = response.json()
-            max = -1
-            tagName = ""
-            for x in jsonRes['predictions']:
-                if (max < x['probability']):
-                    max = x['probability']
-                    tagName = x['tagName']
-            # print(json.dumps(jsonRes, indent=4))
+            #body = img_data
+            #response = requests.post(url, headers=headers, data=body)
+            ## text = response.json()['predictions'][0]['tagName']
+            #jsonRes = response.json()
+            #max = -1
+            #tagName = ""
+            #for x in jsonRes['predictions']:
+             #   if (max < x['probability']):
+              #      max = x['probability']
+               #     tagName = x['tagName']
+            ## print(json.dumps(jsonRes, indent=4))
 
-            textMsg = textMsg + " " + tagName
-            print(textMsg)
-            img_counter = img_counter + 1
-            if img_counter == 4:
-                break
-    cv2.destroyAllWindows()
-    cam.release()
-    return jsonify(textMsg)
+#            textMsg = textMsg + " " + tagName
+ #           print(textMsg)
+  #          img_counter = img_counter + 1
+   #         if img_counter == 4:
+    #            break
+   # cv2.destroyAllWindows()
+    #cam.release()
+    return jsonify("Hello World")
 
 
-#app.run(debug=True)
+app.run(debug=True)
