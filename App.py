@@ -21,21 +21,6 @@ def testfn():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 	return Response("True")
 
-
-def gen_frames():
-    global frame
-
-    while True:
-        success, frame = cam.read()
-        if not success:
-            break
-        else:
-            success, buffer = cv2.imencode('.jpg', frame)
-            frame1 = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame1 + b'\r\n')
-
-
 @app.route('/res', methods=['GET', 'POST'])
 def res():
 
