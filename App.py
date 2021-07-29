@@ -58,7 +58,7 @@ def res():
     #            break
    # cv2.destroyAllWindows()
     #cam.release()
-    return jsonify("Hello World")
+    return "Hello World"
 
 
-app.run(debug=True)
+# app.run(debug=True)
