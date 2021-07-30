@@ -46,7 +46,7 @@ def res():
     url = "https://asltotext.cognitiveservices.azure.com/customvision/v3.0/Prediction/59b8ab1e-0154-47de-9bee-ade8414e8fa2/classify/iterations/Iteration1/image"
     
     headers = {
-        'Prediction-Key': 'c5bfffe88b5c4831a30502b4a5fa7921',
+        'Prediction-Key': '',
         'Content-Type': 'application/octet-stream'
     }
     img_counter = 0
