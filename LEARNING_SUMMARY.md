@@ -4,7 +4,7 @@
 
 ### Summary of learning journey
 
-The web app was built using Python Flask, HTML, CSS and Javascript. All the technologies used were new and were learnt before building the web app, including Azure services. This is my first web app and the first time I learnt Flask and used it. 
+The web app was built using Python Flask, HTML, CSS and Javascript. All the technologies used were relatively new and were learnt before building the web app, including Azure services. This is my first web app that uses an API call and to fetch response from it.
 
 Training and deploying machine learning models on a cloud platform or Azure was also very new and it was interesting to learn how easily an end to end solution can be built. 
 
