@@ -12,7 +12,7 @@ AI can be used to automate the sign language detection and prediction in real ti
 
 ### Approach and Implementation
 
-The architecture of the web app includes a machine learning model and a web cam. The macine learning model manipulates image classification algorithm. The signs in the frames of the video captured the webcam will be predicted and the corresponding alphabet will be displayed and spoken in the web app next to the camera. 
+The architecture of the web app includes a machine learning model and a web cam. The macine learning model manipulates image classification algorithm. The signs in the frames of the video captured the webcam will be predicted and the corresponding alphabet will be displayed and spoken in the web app next to the camera. The web app was built using Python Flask, HTML, CSS and Javascript.
 
 Image classification method was the chosen approach to implement the project where the signs are classified into 26 classes/categories (26 alphabets). The project can also be extended to by being implemented by object detection method and using an IoT device/camera to detect the objects/signs in real time.
 
