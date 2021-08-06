@@ -23,5 +23,5 @@ In future, in addition the the ASL alphabets, words and phrases can be added to 
 ### Result and Summary
 The web app translates ASL to speech with the help of Azure services. The limitations of the web app are less accurate predictions and predicting 4 signs at a time (due to the limitation of a free account), after which the camera should be restarted in order to continue predictions. 
 
-![screenshot of web app](/asl.png)
+![screenshot of web app](/aslpng.png)
 
