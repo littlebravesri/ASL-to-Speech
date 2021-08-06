@@ -1,6 +1,6 @@
 # American Sign Language translation to Speech 
 
-## Microsoft Student Accelerator Program 
+## Microsoft Student Accelerator Program 2021
 
 A project to use Azure Services to build a web app that converts real time sign language gestures into text and speech
 
@@ -21,3 +21,7 @@ The web app was implemented with the help of Azure services. Images of the Ameri
 In future, in addition the the ASL alphabets, words and phrases can be added to train the model to scale the use of the application. Due to the limitation of allowed number of training images for the project and the API calls for the Azure free account, 15 images per alphabet were uploaded to train the model, resulting in less accurate predictions. More number of images can be added for more accurate predictions with more training time. 
  
 ### Result and Summary
+The web app translates ASL to speech with the help of Azure services. The limitations of the web app are less accurate predictions and predicting 4 signs at a time (due to the limitation of a free account), after which the camera should be restarted in order to continue predictions. 
+
+![screenshot of web app](/asl.png)
+
